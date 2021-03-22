@@ -1,0 +1,14 @@
+block of buildings
+bridge
+building
+car
+cow
+crow
+facility
+field
+forest area
+objects
+pond
+river
+truck
+warehouse

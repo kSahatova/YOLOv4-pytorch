@@ -44,7 +44,7 @@ class Trainer(object):
         self.best_mAP = 0.
         self.accumulate = cfg.TRAIN.ACCUMULATE
         self.log_dir = log_dir
-        self.weight_path = "yolov4.weights"
+        self.weight_path = "/content/drive/MyDrive/YOLO/weights/yolov4.weights"
         self.multi_scale_train = cfg.TRAIN.MULTI_SCALE_TRAIN
         if self.multi_scale_train:
             print('Using multi scales training')
@@ -57,7 +57,7 @@ class Trainer(object):
                                            batch_size=cfg.TRAIN.BATCH_SIZE//cfg.TRAIN.ACCUMULATE,
                                            num_workers=cfg.TRAIN.NUMBER_WORKERS,
                                            shuffle=True, pin_memory=True)
-        self.yolov4 = Build_Model(weight_path="yolov4.weights", resume=resume)
+        self.yolov4 = Build_Model(weight_path="/content/drive/MyDrive/YOLO/weights/yolov4.weights", resume=resume)
 
         self.yolov4 = self.yolov4.to(self.device)
 
@@ -195,7 +195,7 @@ class Trainer(object):
                         img_size=cfg.VAL.TEST_IMG_SIZE,
                         confthre=cfg.VAL.CONF_THRESH,
                         nmsthre=cfg.VAL.NMS_THRESH)
-            coco_stat = evaluator.evaluate(bself.yolov4)
+            coco_stat = evaluator.evaluate(self.yolov4)
             logger.info("Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = {:.04f}".format(coco_stat[0]))
             logger.info("Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = {:.04f}".format(coco_stat[1]))            
             logger.info("Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = {:.04f}".format(coco_stat[2]))            

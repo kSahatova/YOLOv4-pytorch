@@ -3,8 +3,8 @@ from yacs.config import CfgNode as CN
 
 _C = CN()
 _C.SEED = 358
-_C.DATA_PATH = "/data"
-_C.PROJECT_PATH = "/data"
+_C.DATA_PATH = "/content/YOLOv4-pytorch/data"
+_C.PROJECT_PATH = "/content/YOLOv4-pytorch/data"
 _C.DETECTION_PATH = "/"
 _C.FP16 = True
 
@@ -60,8 +60,21 @@ _C.VAL.Visual =  True
 
 
 _C.DATASET = CN()
-_C.DATASET.NUM =  1 #your dataset number
-_C.DATASET.CLASSES = ['aeroplane'] # your dataset class
+_C.DATASET.NUM =  14 #your dataset number
+_C.DATASET.CLASSES = ["block of buildings",
+    "bridge",
+    "building",
+    "car",
+    "cow",
+    "crow",
+    "facility",
+    "field",
+    "forest area",
+    "objects",
+    "pond",
+    "river",
+    "truck",
+    "warehouse"] # your dataset class
 
 
 _C.VOC_DATA = CN()

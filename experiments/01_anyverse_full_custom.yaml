@@ -1,0 +1,49 @@
+MODEL:
+  ANCHORS: [[[3.875, 2.875], [8.625, 5.125], [15.125, 7.375]], [[10.375, 4.4375], [12.8125, 5.875], [24.6875, 8.0625]], [[14.625, 4.75], [18.78125, 7.625], [18.78125, 9.90625]]]
+
+TRAIN:
+  ANNO_FILE: "_annotations.txt"
+  DATA_TYPE: 'Customer'  #DATA_TYPE: VOC ,COCO or Customer
+  TRAIN_IMG_SIZE: 608
+  AUGMENT: True
+  BATCH_SIZE: 1
+  ACCUMULATE: 1
+  MULTI_SCALE_TRAIN: True
+  IOU_THRESHOLD_LOSS: 0.5
+  YOLO_EPOCHS: 10
+  MOMENTUM: 0.9
+  WEIGHT_DECAY: 0.0005
+  LR_INIT: 5e-3
+  LR_END: 5e-5
+  WARMUP_EPOCHS: 15  # or None
+
+VAL:
+  ANNO_FILE: "_annotations.txt"
+  TEST_IMG_SIZE: 608
+  BATCH_SIZE: 1
+  NUMBER_WORKERS: 8
+  CONF_THRESH: 0.25
+  NMS_THRESH: 0.5
+  MULTI_SCALE_VAL: False
+  FLIP_VAL: False
+  Visual: True
+
+
+DATASET: 
+  NUM: 14 #your dataset number
+  CLASSES: [
+    "block of buildings",
+    "bridge",
+    "building",
+    "car",
+    "cow",
+    "crow",
+    "facility",
+    "field",
+    "forest area",
+    "objects",
+    "pond",
+    "river",
+    "truck",
+    "warehouse"]
+
