@@ -168,6 +168,9 @@ class Trainer(object):
                             scaled_loss.backward()
                     else:
                         loss.backward()
+                        
+                    torch.nn.utils.clip_grad_norm_(amp.master_params(optimizer), max_norm=1)
+
                     # Accumulate gradient for x batches before optimizing
                     if i % self.accumulate == 0:
                         self.scheduler.step(n_step*epoch + i)
